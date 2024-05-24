@@ -55,7 +55,7 @@ public class Entity extends Thing{
     }
 
 
-    public ArrayList<String> getCombatInvetory(){
+    public ArrayList<String> getCombatInventory(){
         ArrayList<String> res = new ArrayList<String>();
         for (Item key : getInventory().keySet()){
             if (key.combat()){

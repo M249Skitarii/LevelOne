@@ -36,7 +36,7 @@ public class Fight {
                     p = false;
                 } else if (c.equals("inventaire")) {
                     if (!player.getInventory().isEmpty()) {
-                        i = player.getIt(menue.call(player.StrInventory()).split(" ")[0]);
+                        i = player.getIt(menue.call(player.getCombatInventory()).split(" ")[0]);
                         if (i.combat()) {
                             i.use(player, enemy);
                             p = false; //end player turn
