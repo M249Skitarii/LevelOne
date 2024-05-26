@@ -23,12 +23,12 @@ public class Exit extends Thing implements Encounters{
     @Override
     public boolean encounters(World world) {
 
-        //test for someone touching OnMapItem
+        //test for some Entity touches Exit
         ArrayList<Thing> target = world.whatsHere(getPosition());
         if (target.isEmpty()){
             return false;
         }
-        //test if there's an entity and give it to the first one.
+        //test if there's an entity and take it to the world.
         Iterator<Thing> thingIterator = target.iterator();
         Thing i;
         boolean teleport = false;

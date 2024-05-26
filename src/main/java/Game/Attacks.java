@@ -13,7 +13,7 @@ public class Attacks {
     private ArrayList<Effect> effect = new ArrayList<Effect>();
 
     public void execute(Killable caster, Killable enemy){
-        //do
+        //do what the attack do.
     }
 
     public String getName() {

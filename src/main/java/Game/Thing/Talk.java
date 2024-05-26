@@ -2,6 +2,9 @@ package Game.Thing;
 
 import com.example.lostcat.Controller;
 
+/*
+* can be used to ask player for a string answer
+* */
 public class Talk {
 
     private String question;

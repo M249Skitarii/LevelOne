@@ -4,6 +4,7 @@ import Game.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Monster extends Killable implements Encounters{
 
@@ -11,9 +12,8 @@ public class Monster extends Killable implements Encounters{
         super(name, life, inventory, x, y, w, a);
     }
 
-    // choose attack method
+    // Monster's behavior in combat
     public void action(Killable k){
-        //do something
         System.out.println("monster attacks!");
     }
     @Override
@@ -25,6 +25,12 @@ public class Monster extends Killable implements Encounters{
         setStatus(0);
         getWorld().getContent().remove(this);
         System.out.println("oh no, im dead");
+        Iterator<Item> it = getInventory().keySet().iterator();
+        Item i;
+        while (it.hasNext()){
+            i = it.next();
+            getWorld().enterWorld(new OnMapItem(i, getPosition().getX(), getPosition().getY(),getWorld()));
+        }
 
     }
 

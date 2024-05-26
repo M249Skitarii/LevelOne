@@ -111,12 +111,12 @@ public class Controller {
         }
     }
     public static void build() {
-        //create attack
+        //create attack and Attack list
         PowerWordKill pwk = new PowerWordKill();
         ArrayList<Attacks> arsenal = new ArrayList<Attacks>();
         BasicAttack taper = new BasicAttack("taper", 1);
-        arsenal.add(pwk);
         arsenal.add(taper);
+        //arsenal.add(pwk); //PowerWordKill uncomment this line and use this attack to debug kill any monster in one hit.
 
         //Create World
         World world = new World(new ArrayList<Thing>());
@@ -129,6 +129,7 @@ public class Controller {
         p.setStrength(2);
         allThing.add(p);
         //create things
+        allThing.add(new Alex("Alexandra", new HashMap<Item, Integer>(), 1,1, world));
         allThing.add(new Monster("ydde", 4, new HashMap<Item, Integer>(), 1, 2, world2, new ArrayList<Attacks>()));
         allThing.add(new OnMapItem(new Item("pop"), 3, 3, world));
         allThing.add(new OnMapItem(new ItemB("itemB"), 4,4, world2));
@@ -191,7 +192,6 @@ public class Controller {
 
     public static String Menu(Menue M) {
         AtomicReference<String> res = new AtomicReference<>(null);
-
         ListView<String> listView = new ListView<>();
         listView.getItems().addAll(M.getAll());
         listView.setOnKeyPressed(event -> {

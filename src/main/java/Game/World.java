@@ -69,19 +69,7 @@ public class World {
         this.content = content;
     }
 
-    //spawn Thing on a position on world.
-    // if spawns on the entry or exit, then spawn denied and return false.
-    /*public boolean spawn(Thing thing, Coords coords){
-        //if spawn is occupied, denied.
-        if (getContent().containsKey(coords)){
-            return false;
-        }
-        getContent().put(coords, thing);
-        thing.setPosition(coords);
-        return true;
-    }*/
-
-    // generate world
+    // regenerate world
     public void ticker(){
         Iterator<Thing> thingIterator = getContent().iterator();
         ArrayList<Thing> enc = new ArrayList<Thing>();
@@ -135,12 +123,9 @@ public class World {
     }
 
     //move: get coords of thing, get it in content, change coords in thing AND content.
-    // Make move return Game_status
     public boolean move(Thing thing, Coords new_pos){
         System.out.println(new_pos + " "+status);
-        Coords position;
         boolean pass = false;
-        position = thing.getPosition();
 
         //test if destination is valid
         if ( new_pos.getX() >size-1 || new_pos.getY() >size-1 || new_pos.getY() <0 || new_pos.getX() <0){

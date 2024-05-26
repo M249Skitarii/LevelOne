@@ -14,6 +14,7 @@ public class Thing {
         this.world = w;
     }
 
+    //displays the name of thing on the map.
     public String Text(){
         return "THG";
     }

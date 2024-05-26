@@ -10,8 +10,8 @@ import java.util.Iterator;
 
 public class Killable extends Entity{
 
-    private int strength; // attack modifier.
-    private int resistance; // damage taken modifier.
+    private int strength = 0; // attack modifier.
+    private int resistance = 0; // damage taken modifier.
 
 
     // use boolean to lock methods so multiple effect can lock them
@@ -35,6 +35,7 @@ public class Killable extends Entity{
     public ArrayList<Attacks> getAttacks() {
         return attacks;
     }
+    //return string list for Menue Function
     public ArrayList<String> StrAttacks(){
         ArrayList<String> res = new ArrayList<String>();
         Iterator<Attacks> iterator = getAttacks().iterator();
@@ -43,6 +44,7 @@ public class Killable extends Entity{
         }
         return res;
     }
+    //find Attack by name in this Killable's Attack list
     public Attacks getAtt(String e){
         Iterator<Attacks> iterator = getAttacks().iterator();
         Attacks i = getAttacks().get(0);
@@ -119,18 +121,23 @@ public class Killable extends Entity{
     }
 
 
-    public void useItem(Item o){
+    public boolean useItem(Item o){
         if ( getInventory().get(o) != null && !stupid){
-            o.use(this);
+            new Message("game", "sorry can't use that now");
+            return true;
         }
+        return false;
     }
     public void loosePV(int x){
         //if killable is not invicible or attacks heals
         if (x<0 || !invicible){
-            setLife(getLife()-x);
+            setLife(getLife()-x+resistance);
         }
         if (oneShot){
             setLife(0);
+        }
+        if (life<=0){
+            kill();
         }
 
     }
@@ -146,9 +153,6 @@ public class Killable extends Entity{
         while (effectIterator.hasNext()){
             i = effectIterator.next();
             i.allTurn(this);
-        }
-        if (life<=0){
-            kill();
         }
     }
 }

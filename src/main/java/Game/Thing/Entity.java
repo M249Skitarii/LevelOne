@@ -5,9 +5,6 @@ import Game.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-//inventory managing, item use, name?
-
 public class Entity extends Thing{
     private String name;
     private HashMap<Item, Integer> inventory; //item and quantity
@@ -19,6 +16,9 @@ public class Entity extends Thing{
         this.inventory = inventory;
     }
 
+    // **************************************************
+    // Getter Setter Constructor
+    // **************************************************
     public String getName() {
         return name;
     }
@@ -35,7 +35,7 @@ public class Entity extends Thing{
         this.inventory = inventory;
     }
 
-
+    //Convert Inventory to string for Menue Fonctions
     public ArrayList<String> StrInventory(){
         ArrayList<String> res = new ArrayList<String>();
 
@@ -44,7 +44,7 @@ public class Entity extends Thing{
         }
         return res;
     }
-
+    //find an item by name in inventory
     public Item getIt(String e){
         for (Item key : getInventory().keySet()){
             if (key.getName().equals(e))
@@ -54,7 +54,7 @@ public class Entity extends Thing{
         return new Item("getIT: do not exist");
     }
 
-
+    //Same as StrInventory() but only combat item
     public ArrayList<String> getCombatInventory(){
         ArrayList<String> res = new ArrayList<String>();
         for (Item key : getInventory().keySet()){
